@@ -25,8 +25,8 @@ c = largura / 2
 c2 = 420
 velocidade_pista = 5
 velocidade_carro = 0.5
-pista_esquerda = x - 161
-pista_direita = x + 169
+pista_esquerda = x - 80
+pista_direita = x + 140
 raio_buraco = 20
 x_buraco = nova_posicao_buraco()
 y_buraco = -raio_buraco
@@ -36,7 +36,7 @@ pygame.display.set_caption('CARdGame')
 relogio = pygame.time.Clock()
 
 while True:
-    relogio.tick(50)
+    relogio.tick(800)
     tela.fill((255, 255, 255))
 
     keys = pygame.key.get_pressed()
@@ -57,7 +57,7 @@ while True:
         y_buraco = -raio_buraco
         x_buraco = nova_posicao_buraco()
 
-    carro_rect = pygame.Rect(c, c2, 40, 50)
+    '''carro_rect = pygame.Rect(c, c2, 40, 50)'''
     buraco_rect = pygame.Rect(x_buraco - raio_buraco, y_buraco - raio_buraco, raio_buraco * 2, raio_buraco * 2)
 
     dx, dy = processar_eventos()
