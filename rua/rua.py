@@ -9,14 +9,14 @@ x_centro_rua = largura // 2
 largura_rua = 300
 raio_buraco = 30
 
-def carregar_imagem():
-    return pygame.image.load('minha_rua.png')
+def carregar_imagem(caminho):
+    return pygame.image.load(caminho)
 
 def desenha_rua(tela, rua_imagem, y1, y2, buraco_x, buraco_y, buraco_raio):
     tela.blit(rua_imagem, (0, y1))
     tela.blit(rua_imagem, (0, y2))
-    pygame.draw.circle(tela, (255, 255, 255), (buraco_x, buraco_y), buraco_raio + 3)  # Bordas do buraco
-    pygame.draw.circle(tela, (0, 0, 0), (buraco_x, buraco_y), buraco_raio)  # Buraco
+    pygame.draw.circle(tela, (255, 255, 255), (buraco_x, buraco_y), buraco_raio + 3)
+    pygame.draw.circle(tela, (0, 0, 0), (buraco_x, buraco_y), buraco_raio)
 
 def movimento_rua():
     return 5

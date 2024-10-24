@@ -15,7 +15,7 @@ largura = 640
 altura = 480
 
 # Ajuste para passar o caminho correto para a função carregar_imagem
-rua_imagem = carregar_imagem(os.path.join('imagens', 'pista2.png'))
+rua_imagem = carregar_imagem(os.path.join('imagens', 'pista.png'))
 carro_imagem = carregar_imagem(os.path.join('imagens', 'carro.png'))
 
 y1 = 0
@@ -25,8 +25,8 @@ c = largura / 2
 c2 = 420
 velocidade_pista = 5
 velocidade_carro = 0.5
-pista_esquerda = x - 80
-pista_direita = x + 140
+pista_esquerda = x - 161
+pista_direita = x + 169
 raio_buraco = 20
 x_buraco = nova_posicao_buraco()
 y_buraco = -raio_buraco
@@ -36,7 +36,7 @@ pygame.display.set_caption('CARdGame')
 relogio = pygame.time.Clock()
 
 while True:
-    relogio.tick(500)
+    relogio.tick(50)
     tela.fill((255, 255, 255))
 
     keys = pygame.key.get_pressed()
@@ -52,7 +52,7 @@ while True:
 
     desenha_rua(tela, rua_imagem, y1, y2, x_buraco, y_buraco, raio_buraco)
 
-    y_buraco += 0
+    y_buraco += 5
     if y_buraco - raio_buraco > altura:
         y_buraco = -raio_buraco
         x_buraco = nova_posicao_buraco()
@@ -70,5 +70,5 @@ while True:
         c2 = novo_y
 
     tela.blit(carro_imagem, (c, c2))
-   
+
     pygame.display.update()
