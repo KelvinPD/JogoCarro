@@ -20,4 +20,4 @@ def processar_eventos():
     return dx, dy
 
 def desenha_carro():
-    return pygame.image.load('carro.png')
+    return pygame.image.load('carro5.png')

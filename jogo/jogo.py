@@ -14,9 +14,15 @@ pygame.init()
 largura = 640
 altura = 480
 
-# Ajuste para passar o caminho correto para a função carregar_imagem
-rua_imagem = carregar_imagem(os.path.join('imagens', 'pista.png'))
-carro_imagem = carregar_imagem(os.path.join('imagens', 'carro.png'))
+# Carregue a nova imagem do carro
+rua_imagem = carregar_imagem(os.path.join('imagens', 'pista5.png'))
+carro_imagem = carregar_imagem(os.path.join('imagens', 'carro5.png'))
+
+if not carro_imagem:
+    print("Erro ao carregar imagem do carro")
+
+carro_imagem = pygame.transform.scale(carro_imagem, (100, 90))
+rua_imagem = pygame.transform.scale(rua_imagem, (640, 480))
 
 y1 = 0
 y2 = -altura
@@ -25,8 +31,8 @@ c = largura / 2
 c2 = 420
 velocidade_pista = 5
 velocidade_carro = 0.5
-pista_esquerda = x - 80
-pista_direita = x + 140
+pista_esquerda = 200
+pista_direita = 470
 raio_buraco = 20
 x_buraco = nova_posicao_buraco()
 y_buraco = -raio_buraco
@@ -36,7 +42,7 @@ pygame.display.set_caption('CARdGame')
 relogio = pygame.time.Clock()
 
 while True:
-    relogio.tick(800)
+    relogio.tick(600)
     tela.fill((255, 255, 255))
 
     keys = pygame.key.get_pressed()
@@ -57,18 +63,18 @@ while True:
         y_buraco = -raio_buraco
         x_buraco = nova_posicao_buraco()
 
-    '''carro_rect = pygame.Rect(c, c2, 40, 50)'''
+    carro_rect = pygame.Rect(c, c2, carro_imagem.get_width(), carro_imagem.get_height())
     buraco_rect = pygame.Rect(x_buraco - raio_buraco, y_buraco - raio_buraco, raio_buraco * 2, raio_buraco * 2)
 
     dx, dy = processar_eventos()
     novo_x = c + dx * velocidade_carro
     novo_y = c2 + dy * velocidade_carro
 
-    if pista_esquerda < novo_x < pista_direita - 40:
+    if pista_esquerda < novo_x < pista_direita - carro_imagem.get_width():
         c = novo_x
-    if 0 < novo_y < altura - 50:
+    if 0 < novo_y < altura - carro_imagem.get_height():
         c2 = novo_y
 
-    tela.blit(carro_imagem, (c, c2))
+    tela.blit(carro_imagem, (c, c2 - 50))
 
     pygame.display.update()
