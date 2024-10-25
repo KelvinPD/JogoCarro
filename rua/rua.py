@@ -15,11 +15,11 @@ def carregar_imagem(caminho):
 def desenha_rua(tela, rua_imagem, y1, y2, buraco_x, buraco_y, buraco_raio):
     tela.blit(rua_imagem, (0, y1))
     tela.blit(rua_imagem, (0, y2))
-    pygame.draw.circle(tela, (255, 255, 255), (buraco_x, buraco_y), buraco_raio + 3)
-    pygame.draw.circle(tela, (0, 0, 0), (buraco_x, buraco_y), buraco_raio)
+    pygame.draw.circle(tela, (255, 255, 255), (buraco_x, buraco_y - 10), buraco_raio + 3)
+    pygame.draw.circle(tela, (0, 0, 0), (buraco_x, buraco_y - 10), buraco_raio)
 
 def movimento_rua():
     return 5
 
-def nova_posicao_buraco():
-    return random.randint(x_centro_rua - largura_rua // 2 + raio_buraco, x_centro_rua + largura_rua // 2 - raio_buraco)
+def nova_posicao_buraco(pista_esquerda, pista_direita, raio_buraco):
+    return random.randint(pista_esquerda + raio_buraco, pista_direita - raio_buraco)

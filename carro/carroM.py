@@ -13,10 +13,10 @@ def processar_eventos():
         dx = -20
     if keys[K_d]:
         dx = 20
-    '''if keys[K_w]:
-        dy = -20'''
+    if keys[K_w]:
+        dy = -20
     if keys[K_s]:
-        dy = 20
+        dy = 0
     return dx, dy
 
 def desenha_carro():
